@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>XMPP with StropheJs</title>
+<meta name="author" content="Olivier Maridat (Trialog)" />
+<!--[if IE]><script src="js/plugin/html5-ie.js"></script><![endif]-->
+<link rel="stylesheet" type="text/css" title="XMPP" href="style.css" />
+</head>
+<body>
+
+	<header>
+		<h1>XMPP with StropheJS</h1>
+	</header>
+
+	<section id="page_connection">
+		<header>
+			<h1>Login</h1>
+		</header>
+		<form id="login">
+			<fieldset>
+				<label for="jid">JID</label>
+					<input type="text" name="jid" id="jid" tabindex="10" />
+				<label for="password">Password</label>
+					<input type="password" name="password" id="password" tabindex="20" />
+				<input type="button" id="connection" value="Login" tabindex="30" />
+			</fieldset>
+		</form>
+	</section>
+	
+	<section id="feedback">
+		<header>
+			<h1>Feedback</h1>
+		</header>
+		<div id="status"></div>
+		<div id="message"></div>
+	</section>
+
+	<script type="text/javascript" src="js/lib/jquery.js"></script>
+	<script type="text/javascript" src="js/lib/strophe.js"></script>
+	<script type="text/javascript" src="js/shared.js"></script>
+	<!-- <script type="text/javascript" src="js/communityManager.js"></script> -->
+	<script type="text/javascript" src="js/controler.js"></script>
+	<script type="text/javascript" src="js/test-echobot.js"></script>
+</body>
+</html>
