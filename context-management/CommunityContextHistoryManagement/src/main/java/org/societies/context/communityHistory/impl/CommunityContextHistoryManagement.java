@@ -24,6 +24,11 @@
  */
 package org.societies.context.communityHistory.impl;
 
+/**
+ * 
+ * @author nikosk
+ *
+ */
 public class CommunityContextHistoryManagement {
 
 }
