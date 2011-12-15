@@ -27,11 +27,11 @@ Strophe.addConnectionPlugin('roster',
 	 * subscription : "",
 	 * groups : ["", ""],
 	 * resources : {
-	 * myresource : {
-	 * show : "",
-	 * status : "",
-	 * priority : ""
-	 * }
+		 * myresource : {
+			 * show : "",
+			 * status : "",
+			 * priority : ""
+		 * }
 	 * }
 	 * }
 	 * ]
@@ -69,7 +69,7 @@ Strophe.addConnectionPlugin('roster',
 	 * Get Roster on server
 	 *
 	 * Parameters:
-	 * (Function) userCallback - callback on roster result
+//	 * (Function) userCallback - callback on roster result
 	 * (String) ver - current rev of roster
 	 * (only used if roster versioning is enabled)
 	 * (Array) items - initial items of ver
@@ -77,7 +77,8 @@ Strophe.addConnectionPlugin('roster',
 	 * In browser context you can use sessionStorage
 	 * to store your roster in json (JSON.stringify())
 	 */
-	get: function(userCallback, ver, items)
+//	get: function(userCallback, ver, items)
+	get: function(ver, items)
 	{
 		var attrs = {xmlns: Strophe.NS.ROSTER};
 		this.items = [];
@@ -88,9 +89,12 @@ Strophe.addConnectionPlugin('roster',
 			this.items = items || [];
 		}
 		var iq = $iq({type: 'get', 'id' : this._connection.getUniqueId('roster')}).c('query', attrs);
+//		this._connection.sendIQ(iq,
+//				this._onReceiveRosterSuccess.bind(this).prependArg(userCallback),
+//				this._onReceiveRosterError.bind(this).prependArg(userCallback));
 		this._connection.sendIQ(iq,
-				this._onReceiveRosterSuccess.bind(this).prependArg(userCallback),
-				this._onReceiveRosterError.bind(this).prependArg(userCallback));
+				this._onReceiveRosterSuccess.bind(this),
+				this._onReceiveRosterError.bind(this));
 	},
 	/** Function: registerCallback
 	 * register callback on roster (presence and iq)
@@ -189,10 +193,14 @@ Strophe.addConnectionPlugin('roster',
 	/** PrivateFunction: _onReceiveRosterSuccess
 	 *
 	 */
-	_onReceiveRosterSuccess: function(userCallback, stanza)
+//	_onReceiveRosterSuccess: function(userCallback, stanza)
+//	{
+//		this._updateItems(stanza);
+//		userCallback(this.items);
+//	},
+	_onReceiveRosterSuccess: function(stanza)
 	{
 		this._updateItems(stanza);
-		userCallback(this.items);
 	},
 	/** PrivateFunction: _onReceiveRosterError
 	 *

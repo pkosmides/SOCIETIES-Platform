@@ -59,21 +59,9 @@ var Controler = {
 		 * Decide what to do with an incoming message
 		 */
 		handleUpdate: function (data) {
-			Controler.showText(data);
-//			var _d = $(data);
-//			var _message = _d.html();
-//			var _type = _d.attr('type');
-//
-//			switch (_type) {
-//			case MessageType.MSG_TEXT:
-//				Controler.showText(_message);
-//				break;
-//			case MessageType.MSG_HTML:
-//				Controler.showHtml(_message);
-//				break;
-//			default:
-//				Controler.log("Oh dear! I don't understand");
-//			}
+//			Controler.log(data);
+			// Return true to continue to handle updates
+			return true;
 		},
 };
 
@@ -86,6 +74,7 @@ $(document).ready(function () {
 	$('#login').live('click', function () {
 		// Retrieve values
 		Client.jid = $('#jid').get(0).value;
+		Client.node = 'here';
 		Client.password = $('#password').get(0).value;
 		// Connect using Strophe.Connection
 		var conn = new Strophe.Connection(Config.BOSH_SERVICE);
@@ -93,7 +82,7 @@ $(document).ready(function () {
 		Client.connection.rawInput = Controler.raw_input;
 		Client.connection.rawOutput = Controler.raw_output;
 		Client.connection.connect(
-				Client.jid,
+				Client.jid+"/"+Client.node,
 				Client.password,
 				Client.on_connect,
 				Client.on_connect_error
