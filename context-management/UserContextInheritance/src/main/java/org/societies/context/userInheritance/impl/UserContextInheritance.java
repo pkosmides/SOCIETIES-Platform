@@ -24,14 +24,19 @@
  */
 package org.societies.context.userInheritance.impl;
 
-import org.societies.context.mock.spm.identity.EntityIdentifier;
-import org.societies.context.model.api.CtxAttributeIdentifier;
-import org.societies.context.model.api.CtxAttributeValueType;
-import org.societies.context.user.inheritance.api.platform.ConflictResolutionAlgorithm;
-import org.societies.context.user.inheritance.api.platform.IUserCtxInheritanceMgr;
+import org.societies.api.context.model.CtxAttributeIdentifier;
+import org.societies.api.context.model.CtxAttributeValueType;
+import org.societies.api.internal.context.user.inheritance.ConflictResolutionAlgorithm;
+import org.societies.api.internal.context.user.inheritance.IUserCtxInheritanceMgr;
+import org.societies.api.mock.EntityIdentifier;
 
 public class UserContextInheritance implements IUserCtxInheritanceMgr{
 
+	public static void  main(String args[]) {
+		System.out.println("this is an inheritance service");
+	}
+	
+	
 	@Override
 	public void getCIS(EntityIdentifier cisId) {
 		// TODO Auto-generated method stub
